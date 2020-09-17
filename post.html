@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" href="./css/new_file.css">
+	</head>
+	<body>
+		<!-- password:<input class="k2" type="password"  name="" id="" value="" placeholder="请输入密码" /> -->
+		name:<input class="k1" type="text" name="" id="" value="" placeholder="请输入用户名"/>
+	<ul class="">
+		<li class="li1"></li>
+		<!-- <li class="li2"></li> -->
+	</ul>
+	<script type="text/javascript">
+		const input1=document.getElementsByClassName("k1")[0];
+		const input2=document.getElementsByClassName("k2")[0];
+		const ul=document.querySelector("ul");
+		var cunchu;
+		const li1=document.getElementsByClassName("li1")[0];
+		const li2=document.getElementsByClassName("ki2")[0];
+		if(localStorage.cunchu=="NULL")
+		{
+			cunchu=[];
+		}
+		else{
+			cunchu=JSON.parse(localStorage.getItem("cunchu"));
+		}
+		input1.style.cssText="width: 1000px;height: 50px;border: 1px solid red;";
+		// input2.style.cssText="width: 1000px;height: 50px;border: 1px solid red;";
+		var value1=input1.Value;
+		// var  value2=input2.value;
+		function x(){
+			input1.onkeydown=function(ev){
+				if(ev.keyCode==13)
+			{	
+			if(ev.target.value=="")
+			{
+				alert("请输入正确信息！");
+			}
+			else{
+				var t=new Object();
+				t.value=input1.value;
+                
+				console.log(input1.value);
+                   li1.innerHTML=input1.value;		
+				   localStorage.setItem("value",JSON.stringify(afte));
+			}
+			}
+		  }
+		// 	input2.onkeydown=function(ev){
+		// 				if(ev.keyCode==13)
+		// 				{	
+		// 				if(ev.target.value=="")
+		// 				{
+		// 					alert("请输入正确信息！");
+		// 				}
+		// 				else{
+		// 					// var t=new Object();
+		// 					// t.value=input1.value;
+						    
+		// 					console.log(input2.value);
+		// 				       li2.innerHTML=input2.value;						   
+		// 				}
+		// 				}
+		// 	localStorage.setItem("cunchu",JSON.stringify(cunchu));
+		// 	input1.Value="";
+		// 	input2.value="";
+		// }
+	}
+		x();
+		// function  add(){
+		// 	ul.childNodes[0].innerHTML=cunchu.slice(0,1);
+		// 	ul.childNodes[1].innerHTML=cunchu.slice(1,2);
+		// }
+		// add();
+		// function  Serializer(ul)
+	 //    {
+			
+		// }
+		function submit(){
+		var xhr=new XMLHttpRequest();
+		xhr.onreadystatechange=function(){
+			if(xhr.readyState==4)
+			{
+				if((xhr.status>=200&&xhr.status<300)||xhr.status==304)
+				{
+					
+					alert(xhr.responseText);
+				}
+				else
+				{
+					alert("false!");
+				}
+			}
+		}
+		xhr.open("post","http://teacher.xupt.org/api/find",true);
+		// xhr.setRequestHeader("Content-Type","application/json");
+		// xhr.send(Serializer(ul));	
+		xhr.send(JSON.stringify({name:'afte',value:'353'}));
+		// var str=JSON.stringify("hadjkljdj");
+		// console.log(str);
+		// console.log(JSON.parse(str))
+		window.onload=function(){
+			console.log(xhr.responseText);
+		}
+	}
+	    submit();	
+		
+	</script>
+	</body>
+</html>
